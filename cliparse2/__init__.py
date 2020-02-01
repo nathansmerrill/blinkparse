@@ -5,5 +5,5 @@ from cliparse2.argument import Argument
 from cliparse2.command import Command
 from cliparse2.commandArgument import CommandArgument
 
-def parse(args, commands, description=None):
+def parse(args, commands=None, description=None):
     pass
