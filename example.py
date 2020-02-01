@@ -1,4 +1,4 @@
-from cliparse2 import *
+from blinkparse import *
 
 args = parse(
     [
@@ -14,3 +14,5 @@ args = parse(
         ])
     ]
 )
+print(args.command)
+print(args.commandArgs)

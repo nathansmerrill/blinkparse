@@ -2,10 +2,10 @@
 
 import sys
 
-from cliparse2.arguments import Arguments
-from cliparse2.argument import Argument
-from cliparse2.command import Command
-from cliparse2.commandArgument import CommandArgument
+from blinkparse.arguments import Arguments
+from blinkparse.argument import Argument
+from blinkparse.command import Command
+from blinkparse.commandArgument import CommandArgument
 
 def showHelpPage():
     print('help')
@@ -32,3 +32,5 @@ def parse(args, commands=None, description=None):
                 break
         if command is None:
             showHelpPage()
+
+    return Arguments(None, None, command, commandArgs)

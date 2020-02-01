@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/cliparse2.iml" filepath="$PROJECT_DIR$/.idea/cliparse2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/blinkparse.iml" filepath="$PROJECT_DIR$/.idea/blinkparse.iml" />
     </modules>
   </component>
 </project>
