@@ -1,2 +1,0 @@
-# Author: Nathan Merrill (@nathansmerrill)
-
