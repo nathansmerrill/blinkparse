@@ -26,8 +26,8 @@ def parse(args, commands=None, description=None):
                 command = command
                 break
 
-    # for arg in args:
-    #     for inputArg in
+    outputArgs = {}
+    for arg in args:
+        outputArgs.update(arg.check(inputArgs))
 
-    print(inputArgs)
-    return Arguments(None, None, command, commandArgs)
+    return Arguments(outputArgs, inputArgs, command, commandArgs)

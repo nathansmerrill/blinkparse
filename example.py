@@ -2,7 +2,8 @@ from blinkparse import *
 
 args = parse(
     [
-        Argument('save', 's', description='Save the program output')
+        Argument('save', 's', description='Save the program output'),
+        Argument('bruh', 'b', takesValue=True, required=True, description='Bruh')
     ],
     [
         Command('hello', [
@@ -14,5 +15,11 @@ args = parse(
         ])
     ]
 )
+print('args')
+print(args.args)
+print('operands')
+print(args.operands)
+print('command')
 print(args.command.name)
+print('command name')
 print(args.commandArgs)
