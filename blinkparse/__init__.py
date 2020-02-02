@@ -16,21 +16,26 @@ def parse(args, commands=None, description=None):
     command = None
     commandArgs = None
     if commands is not None:
+        try:
+            inputCommand = inputArgs[0]
+        except IndexError:
+            raise ValueError(f'This program requires a command. The options are {list(loopCommand.name for loopCommand in commands)}')
         for loopCommand in commands:
-            if inputArgs[0] == loopCommand.name:
+            if inputCommand == loopCommand.name:
                 command = loopCommand
                 commandArgs = []
                 for i, commandArg in enumerate(loopCommand.args):
                     try:
                         value = inputArgs[i + 1]
-                        if commandArg.options is not None and value not in commandArg.options:
-                            raise ValueError(f'{value} is not a valid argument option. The valid options are {commandArg.options}')
-                        commandArgs.append(value)
                     except IndexError:
                         if commandArg.required:
                             raise ValueError(f'Argument {commandArg.name} is required')
+                        else:
+                            continue
+                    if commandArg.options is not None and value not in commandArg.options:
+                        raise ValueError(f'{value} is not a valid argument option. The valid options are {commandArg.options}')
+                    if commandArg.required or value[0] != '-':
+                        commandArgs.append(value)
                 break
-        if command is None:
-            showHelpPage()
 
     return Arguments(None, None, command, commandArgs)

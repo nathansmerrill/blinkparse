@@ -6,13 +6,13 @@ args = parse(
     ],
     [
         Command('hello', [
-            CommandArgument('person', required=True),
-            CommandArgument('gender', options=['male', 'female', 'other'])
+            CommandArgument('person'),
+            CommandArgument('gender', required=False, options=['male', 'female', 'other'])
         ]),
         Command('bye', [
-            CommandArgument('person', required=True)
+            CommandArgument('person')
         ])
     ]
 )
-print(args.command)
+print(args.command.name)
 print(args.commandArgs)
