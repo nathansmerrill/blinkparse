@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="blinkparse", # Replace with your own username
+    name="blinkparse",
     version="0.0.2",
     author="Nathan Merrill",
     author_email="mathiscool3000@gmail.com",
