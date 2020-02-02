@@ -7,7 +7,7 @@ from blinkparse.argument import Argument
 from blinkparse.command import Command
 from blinkparse.commandArgument import CommandArgument
 
-def parse(args, commands=None, description=''):
+def parse(args=[], commands=None, description=''):
     args.append(Argument('help', 'h', description='Show this help page'))
     inputArgs = sys.argv[1:]
     if commands is not None:
