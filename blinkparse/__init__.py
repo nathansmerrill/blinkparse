@@ -11,7 +11,6 @@ def parse(args, commands=None, description=''):
     args.append(Argument('help', 'h', description='Show this help page'))
     inputArgs = sys.argv[1:]
 
-    command = None
     if commands is not None:
         try:
             inputCommand = inputArgs[0]
@@ -20,14 +19,13 @@ def parse(args, commands=None, description=''):
         for command in commands:
             commandArgs = command.check(inputCommand, inputArgs)
             if commandArgs is not None:
-                command = command
                 break
 
     outputArgs = {}
     for arg in args:
         outputArgs.update(arg.check(inputArgs))
 
-    finalArgs = Arguments(outputArgs, inputArgs, command, commandArgs)
+    finalArgs = Arguments(outputArgs, inputArgs, command.name, commandArgs)
 
     if 'help' in finalArgs.args:
         if description != '':
