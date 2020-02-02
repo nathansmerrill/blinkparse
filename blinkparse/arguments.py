@@ -4,3 +4,6 @@ class Arguments:
         self.operands = operands
         self.command = command
         self.commandArgs = commandArgs
+
+    def getDict(self):
+        return self.__dict__
