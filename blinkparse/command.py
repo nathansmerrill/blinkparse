@@ -1,10 +1,11 @@
 class Command:
-    def __init__(self, name, args=[]):
+    def __init__(self, name, args=[], aliases=[]):
         self.name = name
         self.args = args
+        self.aliases = aliases
 
     def check(self, inputCommand, inputArgs):
-        if inputCommand == self.name:
+        if inputCommand == self.name or inputCommand in self.aliases:
             inputArgs.pop(0)
             commandArgs = {}
             for i, commandArg in enumerate(self.args):
