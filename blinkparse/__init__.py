@@ -7,10 +7,6 @@ from blinkparse.argument import Argument
 from blinkparse.command import Command
 from blinkparse.commandArgument import CommandArgument
 
-def showHelpPage():
-    print('help')
-    sys.exit()
-
 def parse(args, commands=None, description=None):
     inputArgs = sys.argv[1:]
 

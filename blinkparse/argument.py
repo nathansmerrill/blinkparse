@@ -32,7 +32,7 @@ class Argument:
                     except IndexError:
                         raise ValueError(f'The {self.name} argument takes input. Did you mean -{self.shortName} myValue')
                     outputArgs[self.name] = value
-                inputArgs.pop(i)
+                    inputArgs.pop(i)
                 inputArgs.pop(i)
                 break
 

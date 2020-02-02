@@ -3,7 +3,7 @@ from blinkparse import *
 args = parse(
     [
         Argument('save', 's', description='Save the program output'),
-        Argument('bruh', 'b', takesValue=True, required=True, description='Bruh')
+        Argument('bruh', 'b', takesValue=True, description='Bruh')
     ],
     [
         Command('hello', [
