@@ -10,7 +10,6 @@ from blinkparse.commandArgument import CommandArgument
 def parse(args, commands=None, description=''):
     args.append(Argument('help', 'h', description='Show this help page'))
     inputArgs = sys.argv[1:]
-
     if commands is not None:
         try:
             inputCommand = inputArgs[0]
@@ -20,12 +19,15 @@ def parse(args, commands=None, description=''):
             commandArgs = command.check(inputCommand, inputArgs)
             if commandArgs is not None:
                 break
+    else:
+        command = None
+        commandArgs = None
 
     outputArgs = {}
     for arg in args:
         outputArgs.update(arg.check(inputArgs))
 
-    finalArgs = Arguments(outputArgs, inputArgs, command.name, commandArgs)
+    finalArgs = Arguments(outputArgs, inputArgs, command.name if command is not None else None, commandArgs)
 
     if 'help' in finalArgs.args:
         if description != '':

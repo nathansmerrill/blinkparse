@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="blinkparse", # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Nathan Merrill",
     author_email="mathiscool3000@gmail.com",
     description="A python library for parsing command line arguments",
@@ -15,7 +15,6 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: GNU GPLv3 License",
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
