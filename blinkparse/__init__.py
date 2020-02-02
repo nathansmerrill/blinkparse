@@ -8,6 +8,7 @@ from blinkparse.command import Command
 from blinkparse.commandArgument import CommandArgument
 
 def parse(args, commands=None, description=None):
+    args.append(Argument('help', 'h', description='Show this help page'))
     inputArgs = sys.argv[1:]
 
     command = None
@@ -26,4 +27,12 @@ def parse(args, commands=None, description=None):
     for arg in args:
         outputArgs.update(arg.check(inputArgs))
 
-    return Arguments(outputArgs, inputArgs, command, commandArgs)
+    finalArgs = Arguments(outputArgs, inputArgs, command, commandArgs)
+
+    if 'help' in finalArgs.args:
+        for arg in args:
+            print(arg.name)
+
+        sys.exit()
+
+    return finalArgs
