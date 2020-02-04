@@ -3,7 +3,7 @@ A python library for parsing command line arguments
 ## Installation
 `pip install --user blinkparse`
 ## Usage
-#### `parse(args=[], commands=None, description='')`  
+#### `parse(args=[], commands=[], description='')`  
 - Returns a `blinkparse.Arguments` object
 - `args` is a list of `blinkparse.Argument` objects
 - `commands` is a list of `blinkparse.Command` objects
