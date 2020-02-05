@@ -39,11 +39,15 @@ def parse(args=[], commands=[], description='', commandRequired=False):
             print(description.strip())
 
         if len(commands) != 0:
-            print('Commands')
+            if commandRequired:
+                print('Commands - Required')
+            else:
+                print('Commands')
+
             for command in commands:
                 print('    ', command.name)
                 for commandArg in command.args:
-                    print(f'        {commandArg.name}: {commandArg.options if commandArg.options is not None else "anything"}')
+                    print(f'        {commandArg.name}: {commandArg.options if commandArg.options is not None else "anything"}{" - Required" if commandArg.required else ""}')
 
         print('Arguments')
         for arg in args:
