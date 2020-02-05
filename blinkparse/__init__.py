@@ -19,9 +19,14 @@ def parse(args=[], commands=[], description='', commandRequired=False):
             commandArgs = command.check(inputCommand, inputArgs)
             if commandArgs is not None:
                 break
+            else:
+                command = None
     else:
         command = None
         commandArgs = None
+
+    if command is None and commandRequired:
+        raise ValueError(f'This program requires a command. The options are {list(loopCommand.name for loopCommand in commands)}')
 
     outputArgs = {}
     for arg in args:
