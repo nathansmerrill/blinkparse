@@ -46,7 +46,8 @@ args = parse(
     description='''
 hello.py
 A simple demo of blinkparse
-    '''
+    ''',
+    commandRequired=True
 )
 
 if args.command == 'hello':
