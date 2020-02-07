@@ -39,9 +39,10 @@ def displayHelpPage(args, commands, description, commandRequired):
             print('        Required')
     sys.exit()
 
-def parse(args=[], commands=[], description='', commandRequired=False):
+def parse(args=[], commands=[], description='', commandRequired=False, inputArgs=None):
     args.append(Argument('help', 'h', description='Show this help page'))
-    inputArgs = sys.argv[1:]
+    if inputArgs is None:
+        inputArgs = sys.argv[1:]
 
     # Help page - this isn't a normal argument because it needs to be parsed before the others
     if '-h' in inputArgs or '--help' in inputArgs:

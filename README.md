@@ -3,11 +3,13 @@ A python library for parsing command line arguments
 ## Installation
 `pip install --user blinkparse`
 ## Usage
-#### `parse(args=[], commands=[], description='')`  
+#### `parse(args=[], commands=[], description='', commandRequired=False, inputArgs=None)`  
 - Returns a `blinkparse.Arguments` object
 - `args` is a list of `blinkparse.Argument` objects
 - `commands` is a list of `blinkparse.Command` objects
 - `description` is a description to show at the top of the help page  
+- `commandRequired` is whether the program requires a command to be passed in
+- `inputArgs` is an array of the arguments to parse. This defaults to `sys.argv[1:]`
 #### `Argument(self, name, shortName=None, takesValue=False, required=False, description=None)`  
 - `name` is the argument name used in the long syntax (`--myArg`, `--myArg=myValue`)
 - `shortName` is the argument name used in the long syntax (`-a`, `-a myValue`)
