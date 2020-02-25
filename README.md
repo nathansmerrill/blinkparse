@@ -1,29 +1,31 @@
 # BlinkParse
 A python library for parsing command line arguments
 ## Installation
-`pip install --user blinkparse`
+`pip install blinkparse`
 ## Usage
-#### `parse(args=[], commands=[], description='', commandRequired=False, inputArgs=None)`  
+#### `Parser(args=[], commands=[], description='', commandRequired=False, inputArgs=None)`  
 - Returns a `blinkparse.Arguments` object
 - `args` is a list of `blinkparse.Argument` objects
 - `commands` is a list of `blinkparse.Command` objects
 - `description` is a description to show at the top of the help page  
 - `commandRequired` is whether the program requires a command to be passed in
-- `inputArgs` is an array of the arguments to parse. This defaults to `sys.argv[1:]`
-#### `Argument(self, name, shortName=None, takesValue=False, required=False, description=None)`  
+- `parse(inputArgs=None)`
+    - Returns a `blinkparse.Arguments` object
+    - `inputArgs` is a list of the arguments to parse. This defaults to `sys.argv[1:]`
+#### `Argument(name, shortName=None, takesValue=False, required=False, description=None)`  
 - `name` is the argument name used in the long syntax (`--myArg`, `--myArg=myValue`)
 - `shortName` is the argument name used in the long syntax (`-a`, `-a myValue`)
 - `takesValue` is whether the argument takes a input (see above)
 - `required` makes the blinkparse raise an error if the argument isn't passed in
 - `description` is a description to show in the help page  
-#### `Command(self, name, args=[], aliases=[])`  
+#### `Command(name, args=[], aliases=[])`  
 - Usage
     - `Command('hello', [CommandArgument('person'), CommandArgument('gender', required=False, options=['male', 'female', 'other])], 'h')`
     - `$ python3 example.py hello jered`
     - `$ python3 example.py hello joe male`
 - `name` is the name of the command
 - `args` is a list of `blinkparse.CommandArgument` objects that the command takes
-- `CommandArgument(self, name, options=None, required=True)`
+- `CommandArgument(name, options=None, required=True)`
     - `name` is the name of the command argument
     - `options` is a list of allowed options for the argument (defaults to everything)
     - `required` makes blinkparse raise an error if the command argument isn't passed in
@@ -32,7 +34,7 @@ A python library for parsing command line arguments
 ```python
 from blinkparse import *
 
-args = parse(
+args = Parser(
     args=[
         Argument('save', 's', description='Save the program output'),
     ],
@@ -50,7 +52,7 @@ hello.py
 A simple demo of blinkparse
     ''',
     commandRequired=True
-)
+).parse()
 
 if args.command == 'hello':
     output = 'Hello ' + args.commandArgs['person']

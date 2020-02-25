@@ -1,6 +1,6 @@
 from blinkparse import *
 
-args = parse(
+args = Parser(
     args=[
         Argument('save', 's', description='Save the program output'),
     ],
@@ -18,7 +18,7 @@ hello.py
 A simple demo of blinkparse
     ''',
     commandRequired=True
-)
+).parse()
 
 if args.command == 'hello':
     output = 'Hello ' + args.commandArgs['person']
