@@ -4,11 +4,12 @@ from blinkparse.argument import Argument
 from blinkparse.arguments import Arguments
 
 class Parser:
-    def __init__(self, args=[], commands=[], description='', commandRequired=False):
+    def __init__(self, args=[], commands=[], description='', commandRequired=False, noOperands=False):
         self.args = args
         self.commands = commands
         self.description = description
         self.commandRequired = commandRequired
+        self.noOperands = noOperands
         self.args.append(Argument('help', 'h', description='Show this help page'))
 
     def displayHelpPage(self, exit=True):
@@ -72,5 +73,8 @@ class Parser:
         outputArgs = {}
         for arg in self.args:
             outputArgs.update(arg.check(inputArgs))
+
+        if self.noOperands and len(inputArgs) != 0:
+            raise ValueError(f'This program doesn\'t take operands.')
 
         return Arguments(outputArgs, inputArgs, command.name if command is not None else None, commandArgs)
