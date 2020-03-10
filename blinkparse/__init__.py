@@ -1,4 +1,4 @@
-# Author: Nathan Merrill (@nathansmerrill)
+# Author: Nathan Merrill
 
 from blinkparse.parser import Parser
 from blinkparse.arguments import Arguments
