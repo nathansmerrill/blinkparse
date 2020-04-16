@@ -53,20 +53,21 @@ class Parser:
             self.displayHelpPage()
 
         if len(self.commands) != 0:
+            commandExists = True
             try:
                 inputCommand = inputArgs[0]
             except IndexError:
                 if self.commandRequired:
                     raise ValueError(f'This program requires a command. The options are {list(loopCommand.name for loopCommand in self.commands)}')
                 else:
-                    command = None
-                    commandArgs = None
-            for command in self.commands:
-                commandArgs = command.check(inputCommand, inputArgs)
-                if commandArgs is not None:
-                    break
-                else:
-                    command = None
+                    commandExists = False
+            if commandExists:
+                for command in self.commands:
+                    commandArgs = command.check(inputCommand, inputArgs)
+                    if commandArgs is not None:
+                        break
+                    else:
+                        command = None
         else:
             command = None
             commandArgs = None
