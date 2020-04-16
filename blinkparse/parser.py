@@ -61,6 +61,8 @@ class Parser:
                     raise ValueError(f'This program requires a command. The options are {list(loopCommand.name for loopCommand in self.commands)}')
                 else:
                     commandExists = False
+                    command = None
+                    commandArgs = None
             if commandExists:
                 for command in self.commands:
                     commandArgs = command.check(inputCommand, inputArgs)
