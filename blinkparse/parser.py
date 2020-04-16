@@ -56,7 +56,8 @@ class Parser:
             try:
                 inputCommand = inputArgs[0]
             except IndexError:
-                raise ValueError(f'This program requires a command. The options are {list(loopCommand.name for loopCommand in self.commands)}')
+                if self.commandRequired:
+                    raise ValueError(f'This program requires a command. The options are {list(loopCommand.name for loopCommand in self.commands)}')
             for command in self.commands:
                 commandArgs = command.check(inputCommand, inputArgs)
                 if commandArgs is not None:
